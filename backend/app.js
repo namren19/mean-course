@@ -1,13 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const postsRoutes = require('./routes/posts');
 
 
 const app = express();
 
-mongoose.connect("mongodb+srv://norman:W8O7Z9YpjjkTWYBm@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://norman:4Vd81x05d1v8B6Bj@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
 .then(() => {
   console.log('Connected to database!');
 })
@@ -18,6 +19,8 @@ mongoose.connect("mongodb+srv://norman:W8O7Z9YpjjkTWYBm@cluster0-n4wgc.mongodb.n
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use("/images", express.static(path.join('backend/images'))); // any request targeting /imagess will be permitted
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");  // allows any domain to access our resources
