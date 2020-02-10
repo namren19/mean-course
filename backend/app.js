@@ -8,7 +8,8 @@ const postsRoutes = require('./routes/posts');
 
 const app = express();
 
-mongoose.connect("mongodb+srv://norman:4Vd81x05d1v8B6Bj@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
+mongoose.connect("mongodb://localhost:27017/node-angular")
+// mongoose.connect("mongodb+srv://norman:4Vd81x05d1v8B6Bj@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
 .then(() => {
   console.log('Connected to database!');
 })
