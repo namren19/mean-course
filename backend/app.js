@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const postsRoutes = require('./routes/posts');
+const usersRoutes = require('./routes/user');
 
 
 const app = express();
 
 mongoose.connect("mongodb://localhost:27017/node-angular")
-// mongoose.connect("mongodb+srv://norman:4Vd81x05d1v8B6Bj@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
+// mongoose.connect("mongodb+srv://norman:7908776T&^!@#@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
 .then(() => {
   console.log('Connected to database!');
 })
@@ -26,7 +27,7 @@ app.use("/images", express.static(path.join('backend/images'))); // any request 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");  // allows any domain to access our resources
     res.setHeader("Access-Control-Allow-Headers",        //
-    "Origin, X-Requested-Width, Content-Type, Accept"
+    "Origin, X-Requested-Width, Content-Type, Accept, Authorization"
     );
     res.setHeader("Access-Control-Allow-Methods", // Allow HTTP VERB methods
      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
   });
 
 app.use("/api/posts", postsRoutes);
+app.use("/api/users", usersRoutes);
 
 module.exports = app;
 
