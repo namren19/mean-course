@@ -46,7 +46,7 @@ exports.userLogin = (req, res, next) => {
       }
 
   const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id },
-    'norman_will_be_success',
+    process.env.JWT_KEY,
     { expiresIn: "1h" }
     );
     // console.log(token);

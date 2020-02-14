@@ -9,13 +9,16 @@ const usersRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect("mongodb://localhost:27017/node-angular")
-// mongoose.connect("mongodb+srv://norman:7908776T&^!@#@cluster0-n4wgc.mongodb.net/node-angular?retryWrites=true&w=majority")
+// mongoose.connect("mongodb://localhost:27017/node-angular")
+mongoose.connect("mongodb+srv://norman:" +
+process.env.MONGO_ATLAS_PW +
+"@cluster0-n4wgc.mongodb.net/node-angular")
 .then(() => {
   console.log('Connected to database!');
 })
 .catch(() => {
   console.log('Connection Failed');
+  console.log(process.env.MONGO_ATLAS_PW);
 
 });
 

@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_ATLAS_PW": "QU4CY5dRQfQjiPKl",
+    "JWT_KEY": "norman_will_be_success"
+  }
+}
